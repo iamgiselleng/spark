@@ -1,0 +1,1007 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>AI Readiness Discovery (based on SPARK) — for Small & Medium Businesses</title>
+<style>
+  :root {
+    --teal-dark: #01636C;
+    --teal: #028090;
+    --seafoam: #00A896;
+    --mint: #B7EFE5;
+    --coral: #F4A261;
+    --coral-light: #FBD9B5;
+    --coral-bg: #FFF5EB;
+    --ink: #1E293B;
+    --slate: #475569;
+    --muted: #64748B;
+    --hairline: #E2E8F0;
+    --bg-soft: #F8FAFC;
+    --white: #FFFFFF;
+    --shadow-sm: 0 1px 2px rgba(15, 23, 42, 0.06);
+    --shadow-md: 0 4px 12px rgba(15, 23, 42, 0.08);
+    --radius: 12px;
+  }
+
+  * { box-sizing: border-box; }
+
+  html, body {
+    margin: 0;
+    padding: 0;
+    background: var(--bg-soft);
+    color: var(--ink);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: Georgia, "Times New Roman", serif;
+    color: var(--ink);
+    margin: 0;
+    line-height: 1.2;
+  }
+
+  .wrap {
+    max-width: 880px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  /* ---- Header ---- */
+  header {
+    background: var(--teal-dark);
+    color: var(--white);
+    padding: 48px 0 56px;
+    border-bottom: 8px solid var(--coral);
+  }
+  header .eyebrow {
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--mint);
+    margin-bottom: 8px;
+  }
+  header h1 {
+    font-size: 56px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    color: var(--white);
+    margin-bottom: 16px;
+  }
+  header .tagline {
+    font-size: 18px;
+    color: var(--coral-light);
+    max-width: 560px;
+  }
+  header .meta {
+    margin-top: 24px;
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    font-size: 13px;
+    color: var(--mint);
+  }
+  header .meta span::before {
+    content: "•";
+    margin-right: 8px;
+    color: var(--coral);
+  }
+  header .meta span:first-child::before { content: ""; margin-right: 0; }
+
+  /* ---- Sticky progress ---- */
+  .progress-bar {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: var(--white);
+    border-bottom: 1px solid var(--hairline);
+    padding: 12px 0;
+    box-shadow: var(--shadow-sm);
+  }
+  .progress-inner {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  .progress-track {
+    flex: 1;
+    height: 8px;
+    background: var(--hairline);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+  .progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--teal), var(--seafoam));
+    width: 0%;
+    transition: width 0.3s ease;
+  }
+  .progress-label {
+    font-size: 13px;
+    color: var(--muted);
+    font-weight: 600;
+    white-space: nowrap;
+  }
+
+  /* ---- Sections ---- */
+  main { padding: 32px 0 64px; }
+
+  .section {
+    background: var(--white);
+    border: 1px solid var(--hairline);
+    border-radius: var(--radius);
+    padding: 28px 28px 32px;
+    margin-bottom: 24px;
+    box-shadow: var(--shadow-sm);
+  }
+  .section h2 {
+    font-size: 24px;
+    margin-bottom: 4px;
+  }
+  .section .sub {
+    color: var(--muted);
+    font-size: 14px;
+    margin-bottom: 20px;
+  }
+  .section-tag {
+    display: inline-block;
+    background: var(--teal-dark);
+    color: var(--white);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 4px;
+    margin-bottom: 12px;
+  }
+
+  /* ---- Business name input ---- */
+  .name-row {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .field {
+    flex: 1;
+    min-width: 220px;
+  }
+  .field label {
+    display: block;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--slate);
+    margin-bottom: 6px;
+  }
+  .field input {
+    width: 100%;
+    padding: 10px 14px;
+    font-size: 15px;
+    border: 1px solid var(--hairline);
+    border-radius: 8px;
+    background: var(--white);
+    color: var(--ink);
+    font-family: inherit;
+    transition: border-color 0.15s;
+  }
+  .field input:focus {
+    outline: none;
+    border-color: var(--teal);
+    box-shadow: 0 0 0 3px rgba(2, 128, 144, 0.15);
+  }
+
+  /* ---- Question rows ---- */
+  .scale-legend {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    color: var(--muted);
+    margin-bottom: 4px;
+    padding: 0 8px;
+  }
+  .question {
+    border-bottom: 1px solid var(--hairline);
+    padding: 18px 0;
+  }
+  .question:last-child { border-bottom: none; }
+
+  .q-head {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 12px;
+  }
+  .q-num {
+    flex-shrink: 0;
+    font-size: 13px;
+    color: var(--muted);
+    font-weight: 600;
+    min-width: 24px;
+    padding-top: 2px;
+  }
+  .q-step {
+    flex-shrink: 0;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: var(--teal);
+    color: var(--white);
+    font-family: Georgia, serif;
+    font-weight: 700;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .q-step.S { background: var(--teal); }
+  .q-step.P { background: var(--seafoam); }
+  .q-step.A { background: var(--teal-dark); }
+  .q-step.R { background: var(--coral); }
+  .q-step.K { background: #B45A2E; }
+  .q-text {
+    flex: 1;
+    font-size: 15px;
+    color: var(--ink);
+    line-height: 1.5;
+  }
+  .q-area {
+    font-family: Georgia, serif;
+    font-weight: 700;
+    font-size: 17px;
+    color: var(--ink);
+    margin-bottom: 4px;
+  }
+  .q-desc {
+    font-size: 13px;
+    color: var(--muted);
+  }
+
+  .scale {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 8px;
+    margin-top: 4px;
+  }
+  .scale button {
+    background: var(--white);
+    border: 1.5px solid var(--hairline);
+    border-radius: 8px;
+    padding: 12px 0;
+    font-family: Georgia, serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--slate);
+    cursor: pointer;
+    transition: all 0.12s ease;
+  }
+  .scale button:hover {
+    border-color: var(--teal);
+    color: var(--teal);
+    transform: translateY(-1px);
+  }
+  .scale button.selected {
+    background: var(--teal);
+    border-color: var(--teal);
+    color: var(--white);
+    box-shadow: 0 4px 8px rgba(2, 128, 144, 0.25);
+  }
+  .scale-labels {
+    display: flex;
+    justify-content: space-between;
+    font-size: 11px;
+    color: var(--muted);
+    padding: 6px 4px 0;
+  }
+
+  /* ---- CTAs ---- */
+  .cta-row {
+    margin-top: 24px;
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  button.primary {
+    background: var(--coral);
+    color: var(--white);
+    border: none;
+    padding: 14px 28px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    font-family: inherit;
+    box-shadow: var(--shadow-md);
+    transition: transform 0.12s, box-shadow 0.12s;
+  }
+  button.primary:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 16px rgba(244, 162, 97, 0.35);
+  }
+  button.primary:disabled {
+    background: var(--hairline);
+    color: var(--muted);
+    cursor: not-allowed;
+    box-shadow: none;
+    transform: none;
+  }
+  button.secondary {
+    background: var(--white);
+    color: var(--teal-dark);
+    border: 1.5px solid var(--teal);
+    padding: 12px 22px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: inherit;
+  }
+  button.secondary:hover { background: var(--bg-soft); }
+
+  .cta-help {
+    font-size: 13px;
+    color: var(--muted);
+  }
+
+  /* ---- Results ---- */
+  .results { display: none; }
+  .results.visible { display: block; }
+
+  .result-hero {
+    background: linear-gradient(135deg, var(--teal-dark) 0%, var(--teal) 100%);
+    color: var(--white);
+    padding: 40px 32px;
+    border-radius: var(--radius);
+    margin-bottom: 24px;
+    position: relative;
+    overflow: hidden;
+  }
+  .result-hero::before {
+    content: "";
+    position: absolute;
+    top: 0; right: 0;
+    width: 8px; height: 100%;
+    background: var(--coral);
+  }
+  .result-hero h2 {
+    color: var(--white);
+    font-size: 32px;
+    margin-bottom: 8px;
+  }
+  .result-hero .biz {
+    font-size: 15px;
+    color: var(--coral-light);
+    font-style: italic;
+  }
+  .score-row {
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+    margin: 24px 0 8px;
+    flex-wrap: wrap;
+  }
+  .score-big {
+    font-family: Georgia, serif;
+    font-size: 84px;
+    font-weight: 700;
+    line-height: 1;
+    color: var(--white);
+  }
+  .score-band {
+    font-family: Georgia, serif;
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--coral);
+  }
+  .score-caption {
+    font-size: 14px;
+    color: var(--mint);
+  }
+
+  .breakdown h3, .leaks h3, .nextstep h3 {
+    font-size: 18px;
+    margin-bottom: 4px;
+  }
+  .breakdown .sub, .leaks .sub, .nextstep .sub {
+    color: var(--muted);
+    font-size: 13px;
+    margin-bottom: 16px;
+  }
+
+  .spark-row {
+    display: grid;
+    grid-template-columns: 180px 60px 1fr;
+    gap: 16px;
+    align-items: center;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--hairline);
+  }
+  .spark-row:last-child { border-bottom: none; }
+  .spark-label {
+    font-family: Georgia, serif;
+    font-weight: 700;
+    font-size: 14px;
+    color: var(--ink);
+  }
+  .spark-score {
+    font-family: Georgia, serif;
+    font-weight: 700;
+    font-size: 20px;
+    color: var(--teal-dark);
+  }
+  .spark-score-of {
+    font-size: 12px;
+    color: var(--muted);
+    font-weight: 400;
+  }
+  .spark-bar {
+    height: 14px;
+    background: var(--hairline);
+    border-radius: 7px;
+    overflow: hidden;
+    position: relative;
+  }
+  .spark-bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--teal), var(--seafoam));
+    border-radius: 7px;
+    transition: width 0.6s ease;
+  }
+  .spark-blurb {
+    font-size: 12px;
+    color: var(--muted);
+    font-style: italic;
+    margin-top: 4px;
+    grid-column: 1 / -1;
+  }
+
+  /* Top leaks */
+  .leak-card {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    padding: 16px;
+    background: var(--bg-soft);
+    border: 1px solid var(--hairline);
+    border-radius: 10px;
+    margin-bottom: 12px;
+  }
+  .leak-rank {
+    flex-shrink: 0;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    color: var(--white);
+    font-family: Georgia, serif;
+    font-weight: 700;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .leak-rank-1 { background: var(--coral); }
+  .leak-rank-2 { background: var(--seafoam); }
+  .leak-rank-3 { background: var(--teal); }
+  .leak-body { flex: 1; }
+  .leak-name {
+    font-family: Georgia, serif;
+    font-weight: 700;
+    font-size: 16px;
+    color: var(--ink);
+    margin-bottom: 2px;
+  }
+  .leak-action {
+    font-size: 13px;
+    color: var(--muted);
+    font-style: italic;
+  }
+  .leak-pain {
+    flex-shrink: 0;
+    text-align: right;
+    font-family: Georgia, serif;
+  }
+  .leak-pain-num {
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--coral);
+  }
+  .leak-pain-label {
+    font-size: 11px;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+  }
+
+  /* Next step */
+  .nextstep-card {
+    background: var(--teal-dark);
+    color: var(--white);
+    padding: 24px;
+    border-radius: var(--radius);
+    border-left: 6px solid var(--coral);
+    margin-top: 8px;
+  }
+  .nextstep-card .label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    color: var(--coral-light);
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+  .nextstep-text {
+    font-family: Georgia, serif;
+    font-size: 18px;
+    line-height: 1.45;
+    color: var(--white);
+  }
+
+  footer {
+    text-align: center;
+    color: var(--muted);
+    font-size: 12px;
+    padding: 32px 20px;
+    font-style: italic;
+  }
+  footer .spark-line {
+    color: var(--teal);
+    font-family: Georgia, serif;
+    letter-spacing: 0.05em;
+  }
+
+  .scroll-anchor { scroll-margin-top: 80px; }
+
+  /* Print styles */
+  @media print {
+    body { background: var(--white); }
+    .progress-bar, .cta-row, button, header { display: none !important; }
+    .section { box-shadow: none; border: 1px solid #ccc; break-inside: avoid; }
+    .results { display: block !important; }
+    .result-hero { background: var(--teal-dark) !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .nextstep-card { background: var(--teal-dark) !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .leak-card, .spark-bar, .spark-bar-fill { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  }
+
+  @media (max-width: 640px) {
+    header h1 { font-size: 40px; }
+    header { padding: 32px 0 40px; }
+    .section { padding: 22px 18px 24px; }
+    .spark-row {
+      grid-template-columns: 1fr 60px;
+      gap: 8px;
+    }
+    .spark-bar { grid-column: 1 / -1; }
+    .score-big { font-size: 64px; }
+    .score-band { font-size: 22px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <div class="eyebrow">AI Discovery for Small &amp; Medium Businesses</div>
+    <h1>AI Readiness Discovery</h1>
+    <div class="tagline">Based on the SPARK framework. A short check-in to find your business's biggest AI opportunities. No tech background needed.</div>
+    <div class="meta">
+      <span>About 7 minutes</span>
+      <span>18 quick questions</span>
+      <span>Score + top 3 leaks at the end</span>
+    </div>
+  </div>
+</header>
+
+<div class="progress-bar">
+  <div class="wrap progress-inner">
+    <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+    <div class="progress-label" id="progressLabel">0 of 18 answered</div>
+  </div>
+</div>
+
+<main class="wrap">
+
+  <!-- Business details -->
+  <section class="section" id="bizSection">
+    <h2>Tell us about your business</h2>
+    <div class="sub">Optional — useful if you'll save or share your results.</div>
+    <div class="name-row">
+      <div class="field">
+        <label for="bizName">Business name</label>
+        <input type="text" id="bizName" placeholder="e.g. Acme Widgets Pte Ltd" autocomplete="organization" />
+      </div>
+      <div class="field">
+        <label for="contactNum">Contact number</label>
+        <input type="tel" id="contactNum" placeholder="e.g. +65 9123 4567" autocomplete="tel" />
+      </div>
+    </div>
+    <div class="name-row" style="margin-top:12px;">
+      <div class="field">
+        <label for="emailAddr">Email address</label>
+        <input type="email" id="emailAddr" placeholder="e.g. owner@business.com.sg" autocomplete="email" />
+      </div>
+      <div class="field">
+        <label for="advisorName">Advisor name</label>
+        <input type="text" id="advisorName" placeholder="e.g. Jane Smith" autocomplete="name" />
+      </div>
+    </div>
+  </section>
+
+  <!-- Part 1 -->
+  <section class="section" id="part1">
+    <span class="section-tag">Part 1 of 2</span>
+    <h2>AI Readiness</h2>
+    <div class="sub">Rate each statement 1–5. Go with your gut — there are no right answers.</div>
+    <div id="readinessQuestions"></div>
+  </section>
+
+  <!-- Part 2 -->
+  <section class="section" id="part2">
+    <span class="section-tag">Part 2 of 2</span>
+    <h2>Problem Points (Leaks)</h2>
+    <div class="sub">How much time or money is being lost in each area? 1 = Not a problem · 5 = Major drain.</div>
+    <div id="leakQuestions"></div>
+  </section>
+
+  <!-- CTA -->
+  <div class="cta-row">
+    <button class="primary" id="seeResultsBtn" disabled>See my results</button>
+    <span class="cta-help" id="ctaHelp">Answer all 18 to unlock your results.</span>
+  </div>
+
+  <!-- Results -->
+  <section class="results" id="results">
+    <div class="result-hero scroll-anchor" id="resultsAnchor">
+      <h2>Your AI Readiness Discovery</h2>
+      <div class="biz" id="resultBiz"></div>
+      <div class="score-row">
+        <div class="score-big" id="scoreBig">0%</div>
+        <div>
+          <div class="score-band" id="scoreBand">—</div>
+          <div class="score-caption">Overall AI Readiness</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section breakdown">
+      <h3>SPARK breakdown</h3>
+      <div class="sub">Where you're already strong, and where there's ground to make up.</div>
+      <div id="sparkBreakdown"></div>
+    </div>
+
+    <div class="section leaks">
+      <h3>Top 3 Pain Points (Leaks)</h3>
+      <div class="sub">The areas costing the most — your best places to start a pilot.</div>
+      <div id="topLeaks"></div>
+    </div>
+
+    <div class="section nextstep">
+      <h3>Your suggested next step</h3>
+      <div class="sub">Based on where you are right now.</div>
+      <div class="nextstep-card">
+        <div class="label">This week</div>
+        <div class="nextstep-text" id="nextStepText"></div>
+      </div>
+    </div>
+
+    <div class="cta-row">
+      <button class="primary" onclick="window.print()">Print or save as PDF</button>
+      <button class="secondary" onclick="resetForm()">Start over</button>
+      <button class="secondary" onclick="copyResultsText()">Copy summary to clipboard</button>
+      <span class="cta-help" id="copyStatus" style="display:none">Copied!</span>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="spark-line">S P A R K — Spot · Pilot · Apply · Review · Keep</div>
+  <div style="margin-top: 6px;">A practical AI framework for small &amp; medium businesses.</div>
+</footer>
+
+<script>
+const READINESS = [
+  { step: "S", text: "We know which tasks in our business take up the most time." },
+  { step: "S", text: "When work feels slow or repetitive, we stop and ask if there's a better way." },
+  { step: "P", text: "We're willing to test a new tool on a small task first." },
+  { step: "P", text: "In the last 6 months, we tried something new and it worked." },
+  { step: "A", text: "When something works, we write it down so other staff can do it the same way." },
+  { step: "A", text: "Every new tool or process has one person in charge." },
+  { step: "R", text: "We have a rough idea of how much time each task takes." },
+  { step: "R", text: "We check if our tools are actually saving us time or money." },
+  { step: "K", text: "Someone in our team keeps up with what's new in technology." },
+  { step: "K", text: "We keep improving how we work — not just once and then stop." },
+];
+
+const LEAKS = [
+  { name: "Customer communication", desc: "Replying to emails and WhatsApp. Same questions again and again. Chasing for replies." },
+  { name: "Sales & quotes", desc: "Writing quotes and proposals. Replying to enquiries. Putting contracts together." },
+  { name: "Admin & paperwork", desc: "Invoices. Receipts. Monthly reports. Chasing paperwork." },
+  { name: "Content & marketing", desc: "Facebook and Instagram posts. Newsletters. Website wording. Flyers." },
+  { name: "Meetings & notes", desc: "Taking notes. Writing up what was decided. Follow-up emails after." },
+  { name: "Data work", desc: "Typing the same info in many places. Looking things up. Updating spreadsheets." },
+  { name: "People & onboarding", desc: "Job ads. Training new staff. Staff handbook." },
+  { name: "Knowledge & docs", desc: "Only one person knows how to do it. Can't find the file. Explaining the same thing to new staff." },
+];
+
+const SPARK_INFO = {
+  S: { full: "S — Spot the leaks",      blurb: "Are you systematically finding where time goes?" },
+  P: { full: "P — Pilot small wins",    blurb: "Are you willing to test before you commit?" },
+  A: { full: "A — Apply what works",    blurb: "Do good ideas turn into team habits?" },
+  R: { full: "R — Review results",      blurb: "Are you measuring impact honestly?" },
+  K: { full: "K — Keep building",       blurb: "Is improvement a habit, not a project?" },
+};
+
+const READINESS_LABELS = ["Strongly disagree", "", "Neutral", "", "Strongly agree"];
+const PAIN_LABELS = ["Not a problem", "", "Moderate", "", "Major drain"];
+
+// --- State ---
+const answers = {
+  readiness: new Array(READINESS.length).fill(null),
+  leaks: new Array(LEAKS.length).fill(null),
+};
+
+// --- Build readiness questions ---
+const readinessEl = document.getElementById("readinessQuestions");
+READINESS.forEach((q, i) => {
+  const div = document.createElement("div");
+  div.className = "question";
+  div.innerHTML = `
+    <div class="q-head">
+      <div class="q-num">${i + 1}.</div>
+      <div class="q-step ${q.step}">${q.step}</div>
+      <div class="q-text">${q.text}</div>
+    </div>
+    <div class="scale" data-kind="readiness" data-idx="${i}">
+      ${[1,2,3,4,5].map(n => `<button type="button" data-value="${n}">${n}</button>`).join("")}
+    </div>
+    <div class="scale-labels">
+      <span>${READINESS_LABELS[0]}</span>
+      <span>${READINESS_LABELS[2]}</span>
+      <span>${READINESS_LABELS[4]}</span>
+    </div>
+  `;
+  readinessEl.appendChild(div);
+});
+
+// --- Build leak questions ---
+const leakEl = document.getElementById("leakQuestions");
+LEAKS.forEach((l, i) => {
+  const div = document.createElement("div");
+  div.className = "question";
+  div.innerHTML = `
+    <div class="q-head">
+      <div class="q-num">${i + 1}.</div>
+      <div class="q-text">
+        <div class="q-area">${l.name}</div>
+        <div class="q-desc">${l.desc}</div>
+      </div>
+    </div>
+    <div class="scale" data-kind="leaks" data-idx="${i}">
+      ${[1,2,3,4,5].map(n => `<button type="button" data-value="${n}">${n}</button>`).join("")}
+    </div>
+    <div class="scale-labels">
+      <span>${PAIN_LABELS[0]}</span>
+      <span>${PAIN_LABELS[2]}</span>
+      <span>${PAIN_LABELS[4]}</span>
+    </div>
+  `;
+  leakEl.appendChild(div);
+});
+
+// --- Click handler for all scales ---
+document.body.addEventListener("click", (e) => {
+  const btn = e.target.closest(".scale button");
+  if (!btn) return;
+  const scale = btn.parentElement;
+  const kind = scale.dataset.kind;
+  const idx = parseInt(scale.dataset.idx, 10);
+  const val = parseInt(btn.dataset.value, 10);
+
+  // Clear prior selection in this scale
+  scale.querySelectorAll("button").forEach(b => b.classList.remove("selected"));
+  btn.classList.add("selected");
+
+  answers[kind][idx] = val;
+  updateProgress();
+});
+
+function totalAnswered() {
+  return answers.readiness.filter(v => v != null).length +
+         answers.leaks.filter(v => v != null).length;
+}
+function totalQuestions() {
+  return answers.readiness.length + answers.leaks.length;
+}
+
+function updateProgress() {
+  const done = totalAnswered();
+  const total = totalQuestions();
+  const pct = (done / total) * 100;
+  document.getElementById("progressFill").style.width = pct + "%";
+  document.getElementById("progressLabel").textContent =
+    `${done} of ${total} answered`;
+
+  const btn = document.getElementById("seeResultsBtn");
+  const help = document.getElementById("ctaHelp");
+  if (done === total) {
+    btn.disabled = false;
+    help.textContent = "Ready! Click to see your results.";
+  } else {
+    btn.disabled = true;
+    help.textContent = `Answer all ${total} to unlock your results.  (${total - done} left)`;
+  }
+}
+
+// --- Calculate results ---
+function calculateResults() {
+  // SPARK breakdown: 2 questions per letter, max 10 per letter
+  const stepScores = { S: 0, P: 0, A: 0, R: 0, K: 0 };
+  READINESS.forEach((q, i) => {
+    stepScores[q.step] += answers.readiness[i];
+  });
+  const overallTotal = answers.readiness.reduce((a,b) => a+b, 0);
+  const overallPct = Math.round((overallTotal / 50) * 100);
+
+  let band, nextStep;
+  if (overallPct < 30) {
+    band = "Just starting";
+    nextStep = "You're early — that's a great place to start. This week: walk your business and list 5–10 painful tasks. Don't solve anything yet. Just see them clearly.";
+  } else if (overallPct < 55) {
+    band = "Getting going";
+    nextStep = "You have the awareness — now get a quick win. This week: pick the top leak below and run a 2-week pilot with one owner. Keep it small, low-risk, and measurable.";
+  } else if (overallPct < 75) {
+    band = "Building momentum";
+    nextStep = "You're building momentum. This week: turn your best pilot into a one-page playbook so the rest of the team can use it without asking questions.";
+  } else {
+    band = "Well underway";
+    nextStep = "You're well underway. This week: refresh the leak list, schedule the next 30-day review, and set a small weekly rhythm so improvement keeps compounding.";
+  }
+
+  // Top 3 leaks
+  const ranked = LEAKS.map((l, i) => ({
+    name: l.name,
+    desc: l.desc,
+    score: answers.leaks[i],
+    origIndex: i,
+  }))
+  // sort by score descending; tie-break by original order so result is stable
+  .sort((a, b) => b.score - a.score || a.origIndex - b.origIndex)
+  .slice(0, 3);
+
+  return { overallPct, band, stepScores, topLeaks: ranked, nextStep };
+}
+
+// --- Render results ---
+document.getElementById("seeResultsBtn").addEventListener("click", () => {
+  const r = calculateResults();
+  const results = document.getElementById("results");
+
+  // Hero
+  const biz = document.getElementById("bizName").value.trim();
+  const advisor = document.getElementById("advisorName").value.trim();
+  const today = new Date().toLocaleDateString(undefined, { day: "numeric", month: "short", year: "numeric" });
+  const parts = [];
+  if (biz) parts.push(biz);
+  if (advisor) parts.push("Advisor: " + advisor);
+  parts.push(today);
+  document.getElementById("resultBiz").textContent = parts.join(" · ");
+
+  document.getElementById("scoreBig").textContent = r.overallPct + "%";
+  document.getElementById("scoreBand").textContent = r.band;
+
+  // SPARK breakdown
+  const sb = document.getElementById("sparkBreakdown");
+  sb.innerHTML = "";
+  ["S","P","A","R","K"].forEach(letter => {
+    const score = r.stepScores[letter];
+    const pct = (score / 10) * 100;
+    const row = document.createElement("div");
+    row.className = "spark-row";
+    row.innerHTML = `
+      <div class="spark-label">${SPARK_INFO[letter].full}</div>
+      <div class="spark-score">${score}<span class="spark-score-of"> / 10</span></div>
+      <div class="spark-bar"><div class="spark-bar-fill" style="width: ${pct}%"></div></div>
+      <div class="spark-blurb">${SPARK_INFO[letter].blurb}</div>
+    `;
+    sb.appendChild(row);
+  });
+
+  // Top leaks
+  const tl = document.getElementById("topLeaks");
+  tl.innerHTML = "";
+  const actions = [
+    "Start your pilot here.",
+    "Save this for your second pilot.",
+    "Worth keeping on the list.",
+  ];
+  r.topLeaks.forEach((leak, i) => {
+    const card = document.createElement("div");
+    card.className = "leak-card";
+    card.innerHTML = `
+      <div class="leak-rank leak-rank-${i+1}">#${i+1}</div>
+      <div class="leak-body">
+        <div class="leak-name">${leak.name}</div>
+        <div class="leak-action">${actions[i]}  ·  ${leak.desc}</div>
+      </div>
+      <div class="leak-pain">
+        <div class="leak-pain-num">${leak.score}</div>
+        <div class="leak-pain-label">/ 5 pain</div>
+      </div>
+    `;
+    tl.appendChild(card);
+  });
+
+  // Next step
+  document.getElementById("nextStepText").textContent = r.nextStep;
+
+  // Show & scroll
+  results.classList.add("visible");
+  document.getElementById("resultsAnchor").scrollIntoView({ behavior: "smooth", block: "start" });
+});
+
+// --- Reset ---
+function resetForm() {
+  if (!confirm("Clear all answers and start over?")) return;
+  answers.readiness.fill(null);
+  answers.leaks.fill(null);
+  document.querySelectorAll(".scale button.selected").forEach(b => b.classList.remove("selected"));
+  document.getElementById("results").classList.remove("visible");
+  document.getElementById("bizName").value = "";
+  document.getElementById("contactNum").value = "";
+  document.getElementById("emailAddr").value = "";
+  document.getElementById("advisorName").value = "";
+  updateProgress();
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
+// --- Copy summary ---
+function copyResultsText() {
+  const r = calculateResults();
+  const biz = document.getElementById("bizName").value.trim() || "(unnamed business)";
+  const contact = document.getElementById("contactNum").value.trim();
+  const email = document.getElementById("emailAddr").value.trim();
+  const advisor = document.getElementById("advisorName").value.trim();
+  const today = new Date().toLocaleDateString();
+
+  const lines = [];
+  lines.push(`AI Readiness Discovery (based on SPARK) — ${biz}`);
+  if (contact) lines.push(`Contact: ${contact}`);
+  if (email) lines.push(`Email: ${email}`);
+  if (advisor) lines.push(`Advisor: ${advisor}`);
+  lines.push(`Date: ${today}`);
+  lines.push(``);
+  lines.push(`OVERALL AI READINESS: ${r.overallPct}%  (${r.band})`);
+  lines.push(``);
+  lines.push(`SPARK breakdown:`);
+  ["S","P","A","R","K"].forEach(L => {
+    lines.push(`  ${SPARK_INFO[L].full}: ${r.stepScores[L]}/10`);
+  });
+  lines.push(``);
+  lines.push(`Top 3 Pain Points (Leaks):`);
+  r.topLeaks.forEach((l, i) => {
+    lines.push(`  #${i+1}  ${l.name}  (pain ${l.score}/5)`);
+  });
+  lines.push(``);
+  lines.push(`Suggested next step:`);
+  lines.push(`  ${r.nextStep}`);
+
+  const text = lines.join("\n");
+  navigator.clipboard.writeText(text).then(() => {
+    const note = document.getElementById("copyStatus");
+    note.style.display = "inline";
+    setTimeout(() => { note.style.display = "none"; }, 2200);
+  }).catch(() => {
+    alert("Couldn't copy automatically. Here's the text:\n\n" + text);
+  });
+}
+
+// init
+updateProgress();
+</script>
+
+</body>
+</html>
