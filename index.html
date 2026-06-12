@@ -23,539 +23,171 @@
     --shadow-md: 0 4px 12px rgba(15, 23, 42, 0.08);
     --radius: 12px;
   }
-
   * { box-sizing: border-box; }
-
   html, body {
-    margin: 0;
-    padding: 0;
+    margin: 0; padding: 0;
     background: var(--bg-soft);
     color: var(--ink);
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
-    font-size: 16px;
-    line-height: 1.55;
+    font-size: 16px; line-height: 1.55;
     -webkit-font-smoothing: antialiased;
   }
+  h1, h2, h3, h4 { font-family: Georgia, "Times New Roman", serif; color: var(--ink); margin: 0; line-height: 1.2; }
+  .wrap { max-width: 880px; margin: 0 auto; padding: 0 20px; }
 
-  h1, h2, h3, h4 {
-    font-family: Georgia, "Times New Roman", serif;
-    color: var(--ink);
-    margin: 0;
-    line-height: 1.2;
-  }
-
-  .wrap {
-    max-width: 880px;
-    margin: 0 auto;
-    padding: 0 20px;
-  }
-
-  /* ---- Header ---- */
-  header {
-    background: var(--teal-dark);
-    color: var(--white);
-    padding: 48px 0 56px;
-    border-bottom: 8px solid var(--coral);
-  }
-  header .eyebrow {
-    text-transform: uppercase;
-    letter-spacing: 0.18em;
-    font-size: 12px;
-    font-weight: 700;
-    color: var(--mint);
-    margin-bottom: 8px;
-  }
-  header h1 {
-    font-size: 56px;
-    font-weight: 700;
-    letter-spacing: -0.01em;
-    color: var(--white);
-    margin-bottom: 16px;
-  }
-  header .tagline {
-    font-size: 18px;
-    color: var(--coral-light);
-    max-width: 560px;
-  }
-  header .meta {
-    margin-top: 24px;
-    display: flex;
-    gap: 20px;
-    flex-wrap: wrap;
-    font-size: 13px;
-    color: var(--mint);
-  }
-  header .meta span::before {
-    content: "•";
-    margin-right: 8px;
-    color: var(--coral);
-  }
+  header { background: var(--teal-dark); color: var(--white); padding: 48px 0 56px; border-bottom: 8px solid var(--coral); }
+  header .eyebrow { text-transform: uppercase; letter-spacing: 0.18em; font-size: 12px; font-weight: 700; color: var(--mint); margin-bottom: 8px; }
+  header h1 { font-size: 56px; font-weight: 700; letter-spacing: -0.01em; color: var(--white); margin-bottom: 16px; }
+  header .tagline { font-size: 18px; color: var(--coral-light); max-width: 620px; }
+  header .meta { margin-top: 24px; display: flex; gap: 20px; flex-wrap: wrap; font-size: 13px; color: var(--mint); }
+  header .meta span::before { content: "•"; margin-right: 8px; color: var(--coral); }
   header .meta span:first-child::before { content: ""; margin-right: 0; }
 
-  /* ---- Sticky progress ---- */
-  .progress-bar {
-    position: sticky;
-    top: 0;
-    z-index: 10;
-    background: var(--white);
-    border-bottom: 1px solid var(--hairline);
-    padding: 12px 0;
-    box-shadow: var(--shadow-sm);
-  }
-  .progress-inner {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-  }
-  .progress-track {
-    flex: 1;
-    height: 8px;
-    background: var(--hairline);
-    border-radius: 4px;
-    overflow: hidden;
-  }
-  .progress-fill {
-    height: 100%;
-    background: linear-gradient(90deg, var(--teal), var(--seafoam));
-    width: 0%;
-    transition: width 0.3s ease;
-  }
-  .progress-label {
-    font-size: 13px;
-    color: var(--muted);
-    font-weight: 600;
-    white-space: nowrap;
-  }
+  .progress-bar { position: sticky; top: 0; z-index: 10; background: var(--white); border-bottom: 1px solid var(--hairline); padding: 12px 0; box-shadow: var(--shadow-sm); }
+  .progress-inner { display: flex; align-items: center; gap: 16px; }
+  .progress-track { flex: 1; height: 8px; background: var(--hairline); border-radius: 4px; overflow: hidden; }
+  .progress-fill { height: 100%; background: linear-gradient(90deg, var(--teal), var(--seafoam)); width: 0%; transition: width 0.3s ease; }
+  .progress-label { font-size: 13px; color: var(--muted); font-weight: 600; white-space: nowrap; }
 
-  /* ---- Sections ---- */
   main { padding: 32px 0 64px; }
+  .section { background: var(--white); border: 1px solid var(--hairline); border-radius: var(--radius); padding: 28px 28px 32px; margin-bottom: 24px; box-shadow: var(--shadow-sm); }
+  .section h2 { font-size: 24px; margin-bottom: 4px; }
+  .section .sub { color: var(--muted); font-size: 14px; margin-bottom: 20px; }
+  .section-tag { display: inline-block; background: var(--teal-dark); color: var(--white); font-size: 11px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; padding: 4px 10px; border-radius: 4px; margin-bottom: 12px; }
 
-  .section {
-    background: var(--white);
-    border: 1px solid var(--hairline);
-    border-radius: var(--radius);
-    padding: 28px 28px 32px;
-    margin-bottom: 24px;
-    box-shadow: var(--shadow-sm);
+  .name-row { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 12px; }
+  .field { flex: 1; min-width: 220px; }
+  .field.narrow { min-width: 140px; flex: 0 0 160px; }
+  .field label { display: block; font-size: 13px; font-weight: 600; color: var(--slate); margin-bottom: 6px; }
+  .field input, .field select, .field textarea {
+    width: 100%; padding: 10px 14px; font-size: 15px;
+    border: 1px solid var(--hairline); border-radius: 8px;
+    background: var(--white); color: var(--ink);
+    font-family: inherit; transition: border-color 0.15s;
   }
-  .section h2 {
-    font-size: 24px;
-    margin-bottom: 4px;
-  }
-  .section .sub {
-    color: var(--muted);
-    font-size: 14px;
-    margin-bottom: 20px;
-  }
-  .section-tag {
-    display: inline-block;
-    background: var(--teal-dark);
-    color: var(--white);
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    padding: 4px 10px;
-    border-radius: 4px;
-    margin-bottom: 12px;
-  }
-
-  /* ---- Business name input ---- */
-  .name-row {
-    display: flex;
-    gap: 16px;
-    flex-wrap: wrap;
-  }
-  .field {
-    flex: 1;
-    min-width: 220px;
-  }
-  .field label {
-    display: block;
-    font-size: 13px;
-    font-weight: 600;
-    color: var(--slate);
-    margin-bottom: 6px;
-  }
-  .field input {
-    width: 100%;
-    padding: 10px 14px;
-    font-size: 15px;
-    border: 1px solid var(--hairline);
-    border-radius: 8px;
-    background: var(--white);
-    color: var(--ink);
-    font-family: inherit;
-    transition: border-color 0.15s;
-  }
-  .field input:focus {
-    outline: none;
-    border-color: var(--teal);
+  .field textarea { min-height: 70px; resize: vertical; line-height: 1.45; }
+  .field input:focus, .field select:focus, .field textarea:focus {
+    outline: none; border-color: var(--teal);
     box-shadow: 0 0 0 3px rgba(2, 128, 144, 0.15);
   }
+  .field .hint { font-size: 12px; color: var(--muted); margin-top: 4px; font-style: italic; }
 
-  /* ---- Question rows ---- */
-  .scale-legend {
-    display: flex;
-    justify-content: space-between;
-    font-size: 12px;
-    color: var(--muted);
-    margin-bottom: 4px;
-    padding: 0 8px;
-  }
-  .question {
-    border-bottom: 1px solid var(--hairline);
-    padding: 18px 0;
-  }
+  .question { border-bottom: 1px solid var(--hairline); padding: 18px 0; }
   .question:last-child { border-bottom: none; }
-
-  .q-head {
-    display: flex;
-    align-items: flex-start;
-    gap: 12px;
-    margin-bottom: 12px;
-  }
-  .q-num {
-    flex-shrink: 0;
-    font-size: 13px;
-    color: var(--muted);
-    font-weight: 600;
-    min-width: 24px;
-    padding-top: 2px;
-  }
-  .q-step {
-    flex-shrink: 0;
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-    background: var(--teal);
-    color: var(--white);
-    font-family: Georgia, serif;
-    font-weight: 700;
-    font-size: 14px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
+  .q-head { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 12px; }
+  .q-num { flex-shrink: 0; font-size: 13px; color: var(--muted); font-weight: 600; min-width: 24px; padding-top: 2px; }
+  .q-step { flex-shrink: 0; width: 30px; height: 30px; border-radius: 50%; background: var(--teal); color: var(--white); font-family: Georgia, serif; font-weight: 700; font-size: 14px; display: flex; align-items: center; justify-content: center; }
   .q-step.S { background: var(--teal); }
   .q-step.P { background: var(--seafoam); }
   .q-step.A { background: var(--teal-dark); }
   .q-step.R { background: var(--coral); }
   .q-step.K { background: #B45A2E; }
-  .q-text {
-    flex: 1;
-    font-size: 15px;
-    color: var(--ink);
-    line-height: 1.5;
-  }
-  .q-area {
-    font-family: Georgia, serif;
-    font-weight: 700;
-    font-size: 17px;
-    color: var(--ink);
-    margin-bottom: 4px;
-  }
-  .q-desc {
-    font-size: 13px;
-    color: var(--muted);
-  }
+  .q-text { flex: 1; font-size: 15px; color: var(--ink); line-height: 1.5; }
+  .q-area { font-family: Georgia, serif; font-weight: 700; font-size: 17px; color: var(--ink); margin-bottom: 4px; }
+  .q-desc { font-size: 13px; color: var(--muted); }
+  .scale { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; margin-top: 4px; }
+  .scale button { background: var(--white); border: 1.5px solid var(--hairline); border-radius: 8px; padding: 12px 0; font-family: Georgia, serif; font-size: 18px; font-weight: 700; color: var(--slate); cursor: pointer; transition: all 0.12s ease; }
+  .scale button:hover { border-color: var(--teal); color: var(--teal); transform: translateY(-1px); }
+  .scale button.selected { background: var(--teal); border-color: var(--teal); color: var(--white); box-shadow: 0 4px 8px rgba(2, 128, 144, 0.25); }
+  .scale-labels { display: flex; justify-content: space-between; font-size: 11px; color: var(--muted); padding: 6px 4px 0; }
 
-  .scale {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 8px;
-    margin-top: 4px;
-  }
-  .scale button {
-    background: var(--white);
-    border: 1.5px solid var(--hairline);
-    border-radius: 8px;
-    padding: 12px 0;
-    font-family: Georgia, serif;
-    font-size: 18px;
-    font-weight: 700;
-    color: var(--slate);
-    cursor: pointer;
-    transition: all 0.12s ease;
-  }
-  .scale button:hover {
-    border-color: var(--teal);
-    color: var(--teal);
-    transform: translateY(-1px);
-  }
-  .scale button.selected {
-    background: var(--teal);
-    border-color: var(--teal);
-    color: var(--white);
-    box-shadow: 0 4px 8px rgba(2, 128, 144, 0.25);
-  }
-  .scale-labels {
-    display: flex;
-    justify-content: space-between;
-    font-size: 11px;
-    color: var(--muted);
-    padding: 6px 4px 0;
-  }
-
-  /* ---- CTAs ---- */
-  .cta-row {
-    margin-top: 24px;
-    display: flex;
-    gap: 12px;
-    align-items: center;
-    flex-wrap: wrap;
-  }
-  button.primary {
-    background: var(--coral);
-    color: var(--white);
-    border: none;
-    padding: 14px 28px;
-    border-radius: 8px;
-    font-size: 16px;
-    font-weight: 700;
-    cursor: pointer;
-    font-family: inherit;
-    box-shadow: var(--shadow-md);
-    transition: transform 0.12s, box-shadow 0.12s;
-  }
-  button.primary:hover {
-    transform: translateY(-1px);
-    box-shadow: 0 6px 16px rgba(244, 162, 97, 0.35);
-  }
-  button.primary:disabled {
-    background: var(--hairline);
-    color: var(--muted);
-    cursor: not-allowed;
-    box-shadow: none;
-    transform: none;
-  }
-  button.secondary {
-    background: var(--white);
-    color: var(--teal-dark);
-    border: 1.5px solid var(--teal);
-    padding: 12px 22px;
-    border-radius: 8px;
-    font-size: 14px;
-    font-weight: 600;
-    cursor: pointer;
-    font-family: inherit;
-  }
-  button.secondary:hover { background: var(--bg-soft); }
-
-  .cta-help {
-    font-size: 13px;
-    color: var(--muted);
-  }
-
-  /* ---- Results ---- */
-  .results { display: none; }
-  .results.visible { display: block; }
-
-  .result-hero {
-    background: linear-gradient(135deg, var(--teal-dark) 0%, var(--teal) 100%);
-    color: var(--white);
-    padding: 40px 32px;
-    border-radius: var(--radius);
-    margin-bottom: 24px;
-    position: relative;
-    overflow: hidden;
-  }
-  .result-hero::before {
-    content: "";
-    position: absolute;
-    top: 0; right: 0;
-    width: 8px; height: 100%;
-    background: var(--coral);
-  }
-  .result-hero h2 {
-    color: var(--white);
-    font-size: 32px;
-    margin-bottom: 8px;
-  }
-  .result-hero .biz {
-    font-size: 15px;
-    color: var(--coral-light);
-    font-style: italic;
-  }
-  .score-row {
-    display: flex;
-    align-items: baseline;
-    gap: 16px;
-    margin: 24px 0 8px;
-    flex-wrap: wrap;
-  }
-  .score-big {
-    font-family: Georgia, serif;
-    font-size: 84px;
-    font-weight: 700;
-    line-height: 1;
-    color: var(--white);
-  }
-  .score-band {
-    font-family: Georgia, serif;
-    font-size: 28px;
-    font-weight: 700;
-    color: var(--coral);
-  }
-  .score-caption {
-    font-size: 14px;
-    color: var(--mint);
-  }
-
-  .breakdown h3, .leaks h3, .nextstep h3 {
-    font-size: 18px;
-    margin-bottom: 4px;
-  }
-  .breakdown .sub, .leaks .sub, .nextstep .sub {
-    color: var(--muted);
-    font-size: 13px;
-    margin-bottom: 16px;
-  }
-
-  .spark-row {
-    display: grid;
-    grid-template-columns: 180px 60px 1fr;
-    gap: 16px;
-    align-items: center;
-    padding: 12px 0;
-    border-bottom: 1px solid var(--hairline);
-  }
-  .spark-row:last-child { border-bottom: none; }
-  .spark-label {
-    font-family: Georgia, serif;
-    font-weight: 700;
-    font-size: 14px;
-    color: var(--ink);
-  }
-  .spark-score {
-    font-family: Georgia, serif;
-    font-weight: 700;
-    font-size: 20px;
-    color: var(--teal-dark);
-  }
-  .spark-score-of {
-    font-size: 12px;
-    color: var(--muted);
-    font-weight: 400;
-  }
-  .spark-bar {
-    height: 14px;
-    background: var(--hairline);
-    border-radius: 7px;
-    overflow: hidden;
-    position: relative;
-  }
-  .spark-bar-fill {
-    height: 100%;
-    background: linear-gradient(90deg, var(--teal), var(--seafoam));
-    border-radius: 7px;
-    transition: width 0.6s ease;
-  }
-  .spark-blurb {
-    font-size: 12px;
-    color: var(--muted);
-    font-style: italic;
-    margin-top: 4px;
-    grid-column: 1 / -1;
-  }
-
-  /* Top leaks */
-  .leak-card {
-    display: flex;
-    gap: 16px;
-    align-items: center;
-    padding: 16px;
+  .pain-card {
     background: var(--bg-soft);
     border: 1px solid var(--hairline);
-    border-radius: 10px;
-    margin-bottom: 12px;
+    border-left: 4px solid var(--coral);
+    border-radius: var(--radius);
+    padding: 20px 22px 22px;
+    margin-bottom: 18px;
   }
-  .leak-rank {
-    flex-shrink: 0;
-    width: 48px;
-    height: 48px;
-    border-radius: 50%;
-    color: var(--white);
-    font-family: Georgia, serif;
-    font-weight: 700;
-    font-size: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  .pain-card-head { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
+  .pain-card-rank { width: 36px; height: 36px; border-radius: 50%; background: var(--coral); color: var(--white); font-family: Georgia, serif; font-weight: 700; font-size: 15px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .pain-card-rank.rank-2 { background: var(--seafoam); }
+  .pain-card-title { font-family: Georgia, serif; font-weight: 700; font-size: 18px; color: var(--ink); }
+  .pain-card-rating { font-size: 12px; color: var(--muted); margin-left: auto; }
+
+  .ynbtns { display: flex; gap: 8px; }
+  .ynbtns button {
+    flex: 1; padding: 10px 14px; font-size: 14px; font-weight: 600;
+    background: var(--white); border: 1.5px solid var(--hairline); border-radius: 8px;
+    color: var(--slate); cursor: pointer; font-family: inherit; transition: all 0.12s;
   }
+  .ynbtns button:hover { border-color: var(--teal); color: var(--teal); }
+  .ynbtns button.selected { background: var(--teal); border-color: var(--teal); color: var(--white); }
+
+  .chk-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 8px; }
+  .chk-grid label {
+    display: flex; align-items: center; gap: 8px; padding: 10px 12px;
+    border: 1.5px solid var(--hairline); border-radius: 8px; cursor: pointer;
+    font-size: 14px; transition: all 0.12s; background: var(--white);
+  }
+  .chk-grid label:hover { border-color: var(--teal); }
+  .chk-grid label.checked { background: rgba(2, 128, 144, 0.06); border-color: var(--teal); color: var(--teal-dark); font-weight: 600; }
+  .chk-grid input { margin: 0; }
+
+  .conditional { display: none; padding-top: 12px; }
+  .conditional.show { display: block; }
+
+  .lockmsg { background: var(--coral-bg); border-left: 4px solid var(--coral); padding: 14px 18px; border-radius: 8px; font-size: 14px; color: var(--ink); margin-bottom: 18px; }
+
+  .cta-row { margin-top: 24px; display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
+  button.primary { background: var(--coral); color: var(--white); border: none; padding: 14px 28px; border-radius: 8px; font-size: 16px; font-weight: 700; cursor: pointer; font-family: inherit; box-shadow: var(--shadow-md); transition: transform 0.12s, box-shadow 0.12s; }
+  button.primary:hover { transform: translateY(-1px); box-shadow: 0 6px 16px rgba(244, 162, 97, 0.35); }
+  button.primary:disabled { background: var(--hairline); color: var(--muted); cursor: not-allowed; box-shadow: none; transform: none; }
+  button.secondary { background: var(--white); color: var(--teal-dark); border: 1.5px solid var(--teal); padding: 12px 22px; border-radius: 8px; font-size: 14px; font-weight: 600; cursor: pointer; font-family: inherit; }
+  button.secondary:hover { background: var(--bg-soft); }
+  .cta-help { font-size: 13px; color: var(--muted); }
+
+  .results { display: none; }
+  .results.visible { display: block; }
+  .result-hero { background: linear-gradient(135deg, var(--teal-dark) 0%, var(--teal) 100%); color: var(--white); padding: 40px 32px; border-radius: var(--radius); margin-bottom: 24px; position: relative; overflow: hidden; }
+  .result-hero::before { content: ""; position: absolute; top: 0; right: 0; width: 8px; height: 100%; background: var(--coral); }
+  .result-hero h2 { color: var(--white); font-size: 32px; margin-bottom: 8px; }
+  .result-hero .biz { font-size: 15px; color: var(--coral-light); font-style: italic; }
+  .score-row { display: flex; align-items: baseline; gap: 16px; margin: 24px 0 8px; flex-wrap: wrap; }
+  .score-big { font-family: Georgia, serif; font-size: 84px; font-weight: 700; line-height: 1; color: var(--white); }
+  .score-band { font-family: Georgia, serif; font-size: 28px; font-weight: 700; color: var(--coral); }
+  .score-caption { font-size: 14px; color: var(--mint); }
+
+  .breakdown h3, .leaks h3, .nextstep h3, .summary h3 { font-size: 18px; margin-bottom: 4px; }
+  .breakdown .sub, .leaks .sub, .nextstep .sub, .summary .sub { color: var(--muted); font-size: 13px; margin-bottom: 16px; }
+
+  .spark-row { display: grid; grid-template-columns: 180px 60px 1fr; gap: 16px; align-items: center; padding: 12px 0; border-bottom: 1px solid var(--hairline); }
+  .spark-row:last-child { border-bottom: none; }
+  .spark-label { font-family: Georgia, serif; font-weight: 700; font-size: 14px; color: var(--ink); }
+  .spark-score { font-family: Georgia, serif; font-weight: 700; font-size: 20px; color: var(--teal-dark); }
+  .spark-score-of { font-size: 12px; color: var(--muted); font-weight: 400; }
+  .spark-bar { height: 14px; background: var(--hairline); border-radius: 7px; overflow: hidden; }
+  .spark-bar-fill { height: 100%; background: linear-gradient(90deg, var(--teal), var(--seafoam)); border-radius: 7px; transition: width 0.6s ease; }
+  .spark-blurb { font-size: 12px; color: var(--muted); font-style: italic; margin-top: 4px; grid-column: 1 / -1; }
+
+  .leak-card { display: flex; gap: 16px; align-items: center; padding: 16px; background: var(--bg-soft); border: 1px solid var(--hairline); border-radius: 10px; margin-bottom: 12px; }
+  .leak-rank { flex-shrink: 0; width: 48px; height: 48px; border-radius: 50%; color: var(--white); font-family: Georgia, serif; font-weight: 700; font-size: 20px; display: flex; align-items: center; justify-content: center; }
   .leak-rank-1 { background: var(--coral); }
   .leak-rank-2 { background: var(--seafoam); }
   .leak-rank-3 { background: var(--teal); }
   .leak-body { flex: 1; }
-  .leak-name {
-    font-family: Georgia, serif;
-    font-weight: 700;
-    font-size: 16px;
-    color: var(--ink);
-    margin-bottom: 2px;
-  }
-  .leak-action {
-    font-size: 13px;
-    color: var(--muted);
-    font-style: italic;
-  }
-  .leak-pain {
-    flex-shrink: 0;
-    text-align: right;
-    font-family: Georgia, serif;
-  }
-  .leak-pain-num {
-    font-size: 22px;
-    font-weight: 700;
-    color: var(--coral);
-  }
-  .leak-pain-label {
-    font-size: 11px;
-    color: var(--muted);
-    text-transform: uppercase;
-    letter-spacing: 0.12em;
-  }
+  .leak-name { font-family: Georgia, serif; font-weight: 700; font-size: 16px; color: var(--ink); margin-bottom: 2px; }
+  .leak-action { font-size: 13px; color: var(--muted); font-style: italic; }
+  .leak-detail-block { background: var(--white); border: 1px solid var(--hairline); border-radius: 8px; padding: 12px 14px; margin-top: 8px; font-size: 13px; }
+  .leak-detail-block .row { display: flex; gap: 12px; margin-top: 4px; flex-wrap: wrap; }
+  .leak-detail-block .row span { background: var(--bg-soft); padding: 3px 8px; border-radius: 4px; font-size: 12px; color: var(--slate); }
+  .leak-pain { flex-shrink: 0; text-align: right; font-family: Georgia, serif; }
+  .leak-pain-num { font-size: 22px; font-weight: 700; color: var(--coral); }
+  .leak-pain-label { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.12em; }
 
-  /* Next step */
-  .nextstep-card {
-    background: var(--teal-dark);
-    color: var(--white);
-    padding: 24px;
-    border-radius: var(--radius);
-    border-left: 6px solid var(--coral);
-    margin-top: 8px;
-  }
-  .nextstep-card .label {
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 0.15em;
-    color: var(--coral-light);
-    text-transform: uppercase;
-    margin-bottom: 6px;
-  }
-  .nextstep-text {
-    font-family: Georgia, serif;
-    font-size: 18px;
-    line-height: 1.45;
-    color: var(--white);
-  }
+  .nextstep-card { background: var(--teal-dark); color: var(--white); padding: 24px; border-radius: var(--radius); border-left: 6px solid var(--coral); margin-top: 8px; }
+  .nextstep-card .label { font-size: 11px; font-weight: 700; letter-spacing: 0.15em; color: var(--coral-light); text-transform: uppercase; margin-bottom: 6px; }
+  .nextstep-text { font-family: Georgia, serif; font-size: 18px; line-height: 1.45; color: var(--white); }
 
-  footer {
-    text-align: center;
-    color: var(--muted);
-    font-size: 12px;
-    padding: 32px 20px;
-    font-style: italic;
-  }
-  footer .spark-line {
-    color: var(--teal);
-    font-family: Georgia, serif;
-    letter-spacing: 0.05em;
-  }
+  .summary-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .summary-grid div { font-size: 13px; }
+  .summary-grid div strong { display: block; font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); margin-bottom: 2px; font-weight: 700; }
+
+  footer { text-align: center; color: var(--muted); font-size: 12px; padding: 32px 20px; font-style: italic; }
+  footer .spark-line { color: var(--teal); font-family: Georgia, serif; letter-spacing: 0.05em; }
 
   .scroll-anchor { scroll-margin-top: 80px; }
 
-  /* Print styles */
   @media print {
     body { background: var(--white); }
     .progress-bar, .cta-row, button, header { display: none !important; }
@@ -563,20 +195,17 @@
     .results { display: block !important; }
     .result-hero { background: var(--teal-dark) !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
     .nextstep-card { background: var(--teal-dark) !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
-    .leak-card, .spark-bar, .spark-bar-fill { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .leak-card, .spark-bar, .spark-bar-fill, .pain-card { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
   }
-
   @media (max-width: 640px) {
     header h1 { font-size: 40px; }
     header { padding: 32px 0 40px; }
     .section { padding: 22px 18px 24px; }
-    .spark-row {
-      grid-template-columns: 1fr 60px;
-      gap: 8px;
-    }
+    .spark-row { grid-template-columns: 1fr 60px; gap: 8px; }
     .spark-bar { grid-column: 1 / -1; }
     .score-big { font-size: 64px; }
     .score-band { font-size: 22px; }
+    .summary-grid { grid-template-columns: 1fr; }
   }
 </style>
 </head>
@@ -586,11 +215,11 @@
   <div class="wrap">
     <div class="eyebrow">AI Discovery for Small &amp; Medium Businesses</div>
     <h1>AI Readiness Discovery</h1>
-    <div class="tagline">Based on the SPARK framework. A short check-in to find your business's biggest AI opportunities. No tech background needed.</div>
+    <div class="tagline">Based on the SPARK framework. A 15-minute guided check-in for SME owners and advisors — score, top pain points, and grant-ready summary in one place.</div>
     <div class="meta">
-      <span>About 7 minutes</span>
-      <span>18 quick questions</span>
-      <span>Score + top 3 leaks at the end</span>
+      <span>About 15 minutes</span>
+      <span>6 quick parts</span>
+      <span>Score + top 3 pain points + grant-ready summary</span>
     </div>
   </div>
 </header>
@@ -598,61 +227,163 @@
 <div class="progress-bar">
   <div class="wrap progress-inner">
     <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
-    <div class="progress-label" id="progressLabel">0 of 18 answered</div>
+    <div class="progress-label" id="progressLabel">0 of 18 rated</div>
   </div>
 </div>
 
 <main class="wrap">
 
-  <!-- Business details -->
-  <section class="section" id="bizSection">
-    <h2>Tell us about your business</h2>
-    <div class="sub">Optional — useful if you'll save or share your results.</div>
+  <!-- Part 1: Business basics -->
+  <section class="section" id="part1">
+    <span class="section-tag">Part 1 of 6</span>
+    <h2>Business basics</h2>
+    <div class="sub">Quick details — mostly dropdowns to keep this fast.</div>
+
+    <div class="name-row">
+      <div class="field"><label for="bizName">Business name</label><input type="text" id="bizName" placeholder="e.g. Acme Widgets Pte Ltd" autocomplete="organization" /></div>
+      <div class="field narrow"><label for="uen">UEN</label><input type="text" id="uen" placeholder="e.g. 201912345A" /></div>
+    </div>
+    <div class="name-row">
+      <div class="field"><label for="contactNum">Contact number</label><input type="tel" id="contactNum" placeholder="+65 9123 4567" autocomplete="tel" /></div>
+      <div class="field"><label for="emailAddr">Email address</label><input type="email" id="emailAddr" placeholder="owner@business.com.sg" autocomplete="email" /></div>
+    </div>
     <div class="name-row">
       <div class="field">
-        <label for="bizName">Business name</label>
-        <input type="text" id="bizName" placeholder="e.g. Acme Widgets Pte Ltd" autocomplete="organization" />
+        <label for="industry">Industry</label>
+        <select id="industry">
+          <option value="">— Select —</option>
+          <option>F&amp;B</option>
+          <option>Retail</option>
+          <option>Professional Services</option>
+          <option>Manufacturing</option>
+          <option>Logistics &amp; Transport</option>
+          <option>Construction</option>
+          <option>Healthcare</option>
+          <option>Education / Training</option>
+          <option>Wholesale / Trading</option>
+          <option>Other</option>
+        </select>
       </div>
       <div class="field">
-        <label for="contactNum">Contact number</label>
-        <input type="tel" id="contactNum" placeholder="e.g. +65 9123 4567" autocomplete="tel" />
+        <label for="empSize">Total employees</label>
+        <select id="empSize">
+          <option value="">— Select —</option>
+          <option>1–5</option>
+          <option>6–20</option>
+          <option>21–50</option>
+          <option>51–200</option>
+          <option>200+</option>
+        </select>
       </div>
     </div>
-    <div class="name-row" style="margin-top:12px;">
-      <div class="field">
-        <label for="emailAddr">Email address</label>
-        <input type="email" id="emailAddr" placeholder="e.g. owner@business.com.sg" autocomplete="email" />
-      </div>
-      <div class="field">
-        <label for="advisorName">Advisor name</label>
-        <input type="text" id="advisorName" placeholder="e.g. Jane Smith" autocomplete="name" />
-      </div>
+    <div class="name-row">
+      <div class="field narrow"><label for="empLocal">Local employees</label><input type="number" id="empLocal" min="0" placeholder="e.g. 8" /></div>
+      <div class="field narrow"><label for="empForeign">Foreign employees</label><input type="number" id="empForeign" min="0" placeholder="e.g. 4" /></div>
+      <div class="field"><label for="advisorName">Advisor name</label><input type="text" id="advisorName" placeholder="e.g. Jane Smith" autocomplete="name" /></div>
     </div>
   </section>
 
-  <!-- Part 1 -->
-  <section class="section" id="part1">
-    <span class="section-tag">Part 1 of 2</span>
+  <!-- Part 2: AI Readiness -->
+  <section class="section" id="part2">
+    <span class="section-tag">Part 2 of 6</span>
     <h2>AI Readiness</h2>
-    <div class="sub">Rate each statement 1–5. Go with your gut — there are no right answers.</div>
+    <div class="sub">Rate each statement 1–5. Go with your gut — no right answers.</div>
     <div id="readinessQuestions"></div>
   </section>
 
-  <!-- Part 2 -->
-  <section class="section" id="part2">
-    <span class="section-tag">Part 2 of 2</span>
+  <!-- Part 3: Pain Points rating -->
+  <section class="section" id="part3">
+    <span class="section-tag">Part 3 of 6</span>
     <h2>Problem Points (Leaks)</h2>
     <div class="sub">How much time or money is being lost in each area? 1 = Not a problem · 5 = Major drain.</div>
     <div id="leakQuestions"></div>
   </section>
 
-  <!-- CTA -->
+  <!-- Part 4: Pain Point detail -->
+  <section class="section" id="part4">
+    <span class="section-tag">Part 4 of 6</span>
+    <h2>Your top pain points in detail</h2>
+    <div class="sub">We'll auto-pick your top 2 from Part 3. For each, a bit more detail.</div>
+    <div id="painDetailLock" class="lockmsg">Finish rating all 8 problem points in Part 3 above and this section will fill in for you.</div>
+    <div id="painDetailContainer" style="display:none;"></div>
+  </section>
+
+  <!-- Part 5: Project logistics -->
+  <section class="section" id="part5">
+    <span class="section-tag">Part 5 of 6</span>
+    <h2>Project logistics</h2>
+    <div class="sub">Budget, grants, project owner, and a time to meet your advisor 1-on-1.</div>
+
+    <div class="name-row">
+      <div class="field">
+        <label for="budget">Rough budget for AI</label>
+        <select id="budget">
+          <option value="">— Select —</option>
+          <option>Less than $10K</option>
+          <option>$10K – $50K</option>
+          <option>$50K – $100K</option>
+          <option>More than $100K</option>
+          <option>Not sure yet</option>
+        </select>
+      </div>
+    </div>
+
+    <div style="margin: 14px 0 6px;">
+      <label style="display:block; font-size:13px; font-weight:600; color:var(--slate); margin-bottom:8px;">Aware of any of these grants? <span style="color:var(--muted); font-weight:400;">(tick all that apply)</span></label>
+      <div class="chk-grid" id="grantsGrid">
+        <label><input type="checkbox" value="PSG" /> PSG</label>
+        <label><input type="checkbox" value="EDG" /> EDG</label>
+        <label><input type="checkbox" value="ECI" /> ECI</label>
+        <label><input type="checkbox" value="SFEC" /> SFEC</label>
+        <label><input type="checkbox" value="None" /> None of these</label>
+        <label><input type="checkbox" value="Not sure" /> Not sure</label>
+      </div>
+    </div>
+
+    <div class="name-row" style="margin-top:18px;">
+      <div class="field">
+        <label>Planning new hires?</label>
+        <div class="ynbtns" data-target="hireYN"><button type="button" data-val="Yes">Yes</button><button type="button" data-val="No">No</button></div>
+        <div class="conditional" id="hireYesPanel">
+          <label for="hireCount" style="font-size:12px; font-weight:600; color:var(--slate); margin-top:8px; display:block;">How many?</label>
+          <input type="number" id="hireCount" min="0" placeholder="e.g. 3" style="margin-top:4px;" />
+        </div>
+      </div>
+      <div class="field">
+        <label>Will you champion this AI project?</label>
+        <div class="ynbtns" data-target="championYN"><button type="button" data-val="Yes">Yes</button><button type="button" data-val="No">No</button></div>
+      </div>
+    </div>
+
+    <div class="conditional" id="championNoPanel">
+      <div style="margin-top:14px; padding:14px 16px; background:var(--bg-soft); border-radius:8px; border-left:3px solid var(--coral);">
+        <div style="font-size:13px; font-weight:600; color:var(--slate); margin-bottom:10px;">Person in charge of the AI project</div>
+        <div class="name-row">
+          <div class="field"><label for="picName">Name</label><input type="text" id="picName" /></div>
+          <div class="field"><label for="picDesig">Designation</label><input type="text" id="picDesig" /></div>
+        </div>
+        <div class="name-row">
+          <div class="field"><label for="picMobile">Mobile</label><input type="tel" id="picMobile" /></div>
+          <div class="field"><label for="picEmail">Email</label><input type="email" id="picEmail" /></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="name-row" style="margin-top:18px;">
+      <div class="field">
+        <label for="meetingTime">Preferred date/time for a 1-on-1 with your advisor</label>
+        <input type="text" id="meetingTime" placeholder="e.g. Tue 24 June, 2–3pm" />
+        <div class="hint">Doesn't have to be exact — a window works.</div>
+      </div>
+    </div>
+  </section>
+
   <div class="cta-row">
     <button class="primary" id="seeResultsBtn" disabled>See my results</button>
-    <span class="cta-help" id="ctaHelp">Answer all 18 to unlock your results.</span>
+    <span class="cta-help" id="ctaHelp">Complete the required fields to unlock your results.</span>
   </div>
 
-  <!-- Results -->
+  <!-- Part 6: Results -->
   <section class="results" id="results">
     <div class="result-hero scroll-anchor" id="resultsAnchor">
       <h2>Your AI Readiness Discovery</h2>
@@ -674,8 +405,14 @@
 
     <div class="section leaks">
       <h3>Top 3 Pain Points (Leaks)</h3>
-      <div class="sub">The areas costing the most — your best places to start a pilot.</div>
+      <div class="sub">Your best places to start a pilot. Details below for the top 2.</div>
       <div id="topLeaks"></div>
+    </div>
+
+    <div class="section summary">
+      <h3>Business &amp; logistics summary</h3>
+      <div class="sub">A snapshot for the advisor 1-on-1.</div>
+      <div class="summary-grid" id="summaryGrid"></div>
     </div>
 
     <div class="section nextstep">
@@ -738,13 +475,16 @@ const SPARK_INFO = {
 const READINESS_LABELS = ["Strongly disagree", "", "Neutral", "", "Strongly agree"];
 const PAIN_LABELS = ["Not a problem", "", "Moderate", "", "Major drain"];
 
-// --- State ---
 const answers = {
   readiness: new Array(READINESS.length).fill(null),
   leaks: new Array(LEAKS.length).fill(null),
+  painDetail: [
+    { description: "", outcomes: "", affected: "", local: "", over12: "", acra: "" },
+    { description: "", outcomes: "", affected: "", local: "", over12: "", acra: "" },
+  ],
+  logistics: { hireYN: "", championYN: "" },
 };
 
-// --- Build readiness questions ---
 const readinessEl = document.getElementById("readinessQuestions");
 READINESS.forEach((q, i) => {
   const div = document.createElement("div");
@@ -759,15 +499,11 @@ READINESS.forEach((q, i) => {
       ${[1,2,3,4,5].map(n => `<button type="button" data-value="${n}">${n}</button>`).join("")}
     </div>
     <div class="scale-labels">
-      <span>${READINESS_LABELS[0]}</span>
-      <span>${READINESS_LABELS[2]}</span>
-      <span>${READINESS_LABELS[4]}</span>
-    </div>
-  `;
+      <span>${READINESS_LABELS[0]}</span><span>${READINESS_LABELS[2]}</span><span>${READINESS_LABELS[4]}</span>
+    </div>`;
   readinessEl.appendChild(div);
 });
 
-// --- Build leak questions ---
 const leakEl = document.getElementById("leakQuestions");
 LEAKS.forEach((l, i) => {
   const div = document.createElement("div");
@@ -784,15 +520,11 @@ LEAKS.forEach((l, i) => {
       ${[1,2,3,4,5].map(n => `<button type="button" data-value="${n}">${n}</button>`).join("")}
     </div>
     <div class="scale-labels">
-      <span>${PAIN_LABELS[0]}</span>
-      <span>${PAIN_LABELS[2]}</span>
-      <span>${PAIN_LABELS[4]}</span>
-    </div>
-  `;
+      <span>${PAIN_LABELS[0]}</span><span>${PAIN_LABELS[2]}</span><span>${PAIN_LABELS[4]}</span>
+    </div>`;
   leakEl.appendChild(div);
 });
 
-// --- Click handler for all scales ---
 document.body.addEventListener("click", (e) => {
   const btn = e.target.closest(".scale button");
   if (!btn) return;
@@ -800,49 +532,159 @@ document.body.addEventListener("click", (e) => {
   const kind = scale.dataset.kind;
   const idx = parseInt(scale.dataset.idx, 10);
   const val = parseInt(btn.dataset.value, 10);
-
-  // Clear prior selection in this scale
   scale.querySelectorAll("button").forEach(b => b.classList.remove("selected"));
   btn.classList.add("selected");
-
   answers[kind][idx] = val;
+  if (kind === "leaks") maybeRevealPainDetail();
   updateProgress();
 });
 
-function totalAnswered() {
-  return answers.readiness.filter(v => v != null).length +
-         answers.leaks.filter(v => v != null).length;
+document.body.addEventListener("click", (e) => {
+  const btn = e.target.closest(".ynbtns button");
+  if (!btn || btn.classList.contains("pain-acra-btn")) return;
+  const group = btn.parentElement;
+  const target = group.dataset.target;
+  if (!target) return;
+  const val = btn.dataset.val;
+  group.querySelectorAll("button").forEach(b => b.classList.remove("selected"));
+  btn.classList.add("selected");
+  answers.logistics[target] = val;
+  if (target === "hireYN") document.getElementById("hireYesPanel").classList.toggle("show", val === "Yes");
+  if (target === "championYN") document.getElementById("championNoPanel").classList.toggle("show", val === "No");
+  updateProgress();
+});
+
+document.body.addEventListener("click", (e) => {
+  const btn = e.target.closest(".pain-acra-btn");
+  if (!btn) return;
+  const idx = parseInt(btn.dataset.painidx, 10);
+  const val = btn.dataset.val;
+  btn.parentElement.querySelectorAll(".pain-acra-btn").forEach(b => b.classList.remove("selected"));
+  btn.classList.add("selected");
+  answers.painDetail[idx].acra = val;
+  updateProgress();
+});
+
+function bindPainInputs() {
+  document.querySelectorAll(".pain-input").forEach(inp => {
+    inp.addEventListener("input", () => {
+      const idx = parseInt(inp.dataset.painidx, 10);
+      const field = inp.dataset.field;
+      answers.painDetail[idx][field] = inp.value;
+      updateProgress();
+    });
+  });
 }
-function totalQuestions() {
-  return answers.readiness.length + answers.leaks.length;
+
+document.querySelectorAll("#grantsGrid input[type=checkbox]").forEach(cb => {
+  cb.addEventListener("change", () => cb.parentElement.classList.toggle("checked", cb.checked));
+});
+
+function getTopLeaks(n) {
+  return LEAKS.map((l, i) => ({ name: l.name, desc: l.desc, score: answers.leaks[i], origIndex: i }))
+    .filter(x => x.score != null)
+    .sort((a, b) => b.score - a.score || a.origIndex - b.origIndex)
+    .slice(0, n);
+}
+
+function maybeRevealPainDetail() {
+  const allDone = answers.leaks.every(v => v != null);
+  const lock = document.getElementById("painDetailLock");
+  const cont = document.getElementById("painDetailContainer");
+  if (!allDone) {
+    lock.style.display = "block";
+    cont.style.display = "none";
+    return;
+  }
+  lock.style.display = "none";
+  cont.style.display = "block";
+
+  const saved = JSON.parse(JSON.stringify(answers.painDetail));
+  const top2 = getTopLeaks(2);
+  cont.innerHTML = top2.map((p, i) => `
+    <div class="pain-card">
+      <div class="pain-card-head">
+        <div class="pain-card-rank ${i === 1 ? 'rank-2' : ''}">#${i+1}</div>
+        <div class="pain-card-title">${p.name}</div>
+        <div class="pain-card-rating">Pain rating: ${p.score}/5</div>
+      </div>
+      <div class="name-row">
+        <div class="field" style="min-width:100%;">
+          <label>What does this pain look like in your business?</label>
+          <textarea class="pain-input" data-painidx="${i}" data-field="description" placeholder="e.g. We get 50+ WhatsApp enquiries a day, mostly the same questions about pricing and stock.">${saved[i].description}</textarea>
+        </div>
+      </div>
+      <div class="name-row">
+        <div class="field" style="min-width:100%;">
+          <label>What are your desired outcomes? <span style="color:var(--muted); font-weight:400; font-size:12px;">(e.g. time saved, customers served, errors avoided…)</span></label>
+          <textarea class="pain-input" data-painidx="${i}" data-field="outcomes" placeholder="e.g. Save 2 hours a day, reply to enquiries within 10 minutes, fewer lost leads.">${saved[i].outcomes}</textarea>
+        </div>
+      </div>
+      <div class="name-row">
+        <div class="field narrow"><label># employees affected</label><input type="number" min="0" class="pain-input" data-painidx="${i}" data-field="affected" value="${saved[i].affected}" /></div>
+        <div class="field narrow"><label>Of these, local</label><input type="number" min="0" class="pain-input" data-painidx="${i}" data-field="local" value="${saved[i].local}" /></div>
+        <div class="field narrow"><label>Employed &gt;12 months</label><input type="number" min="0" class="pain-input" data-painidx="${i}" data-field="over12" value="${saved[i].over12}" /></div>
+        <div class="field">
+          <label>Any related to ACRA-listed stakeholders? <span style="color:var(--muted); font-weight:400; font-size:11px;">(family, spouse, kids…)</span></label>
+          <div class="ynbtns">
+            <button type="button" class="pain-acra-btn ${saved[i].acra==='Yes'?'selected':''}" data-painidx="${i}" data-val="Yes">Yes</button>
+            <button type="button" class="pain-acra-btn ${saved[i].acra==='No'?'selected':''}" data-painidx="${i}" data-val="No">No</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  `).join("");
+
+  answers.painDetail = saved;
+  bindPainInputs();
+}
+
+function totalRated() { return answers.readiness.filter(v => v != null).length + answers.leaks.filter(v => v != null).length; }
+function totalRatings() { return answers.readiness.length + answers.leaks.length; }
+
+function painDetailComplete() {
+  if (!answers.leaks.every(v => v != null)) return false;
+  return answers.painDetail.slice(0, 2).every(p =>
+    p.description.trim() !== "" && p.outcomes.trim() !== ""
+  );
+}
+
+function logisticsComplete() {
+  return answers.logistics.championYN !== "" && document.getElementById("budget").value !== "";
 }
 
 function updateProgress() {
-  const done = totalAnswered();
-  const total = totalQuestions();
-  const pct = (done / total) * 100;
+  const rated = totalRated();
+  const totalR = totalRatings();
+  const pct = (rated / totalR) * 100;
   document.getElementById("progressFill").style.width = pct + "%";
-  document.getElementById("progressLabel").textContent =
-    `${done} of ${total} answered`;
+  document.getElementById("progressLabel").textContent = `${rated} of ${totalR} rated`;
 
   const btn = document.getElementById("seeResultsBtn");
   const help = document.getElementById("ctaHelp");
-  if (done === total) {
+
+  const ratingsDone = rated === totalR;
+  const painDone = painDetailComplete();
+  const logDone = logisticsComplete();
+
+  if (ratingsDone && painDone && logDone) {
     btn.disabled = false;
     help.textContent = "Ready! Click to see your results.";
   } else {
     btn.disabled = true;
-    help.textContent = `Answer all ${total} to unlock your results.  (${total - done} left)`;
+    const missing = [];
+    if (!ratingsDone) missing.push(`rate the remaining ${totalR - rated} statement${totalR - rated === 1 ? '' : 's'}`);
+    if (ratingsDone && !painDone) missing.push("describe top 2 pains + desired outcomes (Part 4)");
+    if (!logDone) missing.push("pick a budget and answer the champion question (Part 5)");
+    help.textContent = "To unlock results: " + missing.join("; ") + ".";
   }
 }
 
-// --- Calculate results ---
+document.getElementById("budget").addEventListener("change", updateProgress);
+
 function calculateResults() {
-  // SPARK breakdown: 2 questions per letter, max 10 per letter
   const stepScores = { S: 0, P: 0, A: 0, R: 0, K: 0 };
-  READINESS.forEach((q, i) => {
-    stepScores[q.step] += answers.readiness[i];
-  });
+  READINESS.forEach((q, i) => { stepScores[q.step] += answers.readiness[i]; });
   const overallTotal = answers.readiness.reduce((a,b) => a+b, 0);
   const overallPct = Math.round((overallTotal / 50) * 100);
 
@@ -852,7 +694,7 @@ function calculateResults() {
     nextStep = "You're early — that's a great place to start. This week: walk your business and list 5–10 painful tasks. Don't solve anything yet. Just see them clearly.";
   } else if (overallPct < 55) {
     band = "Getting going";
-    nextStep = "You have the awareness — now get a quick win. This week: pick the top leak below and run a 2-week pilot with one owner. Keep it small, low-risk, and measurable.";
+    nextStep = "You have the awareness — now get a quick win. This week: pick your top pain below and run a 2-week pilot with one owner. Keep it small, low-risk, and measurable.";
   } else if (overallPct < 75) {
     band = "Building momentum";
     nextStep = "You're building momentum. This week: turn your best pilot into a one-page playbook so the rest of the team can use it without asking questions.";
@@ -861,26 +703,15 @@ function calculateResults() {
     nextStep = "You're well underway. This week: refresh the leak list, schedule the next 30-day review, and set a small weekly rhythm so improvement keeps compounding.";
   }
 
-  // Top 3 leaks
-  const ranked = LEAKS.map((l, i) => ({
-    name: l.name,
-    desc: l.desc,
-    score: answers.leaks[i],
-    origIndex: i,
-  }))
-  // sort by score descending; tie-break by original order so result is stable
-  .sort((a, b) => b.score - a.score || a.origIndex - b.origIndex)
-  .slice(0, 3);
-
-  return { overallPct, band, stepScores, topLeaks: ranked, nextStep };
+  return { overallPct, band, stepScores, topLeaks: getTopLeaks(3), nextStep };
 }
 
-// --- Render results ---
+function escapeHtml(s) { return s.replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
+
 document.getElementById("seeResultsBtn").addEventListener("click", () => {
   const r = calculateResults();
   const results = document.getElementById("results");
 
-  // Hero
   const biz = document.getElementById("bizName").value.trim();
   const advisor = document.getElementById("advisorName").value.trim();
   const today = new Date().toLocaleDateString(undefined, { day: "numeric", month: "short", year: "numeric" });
@@ -893,7 +724,6 @@ document.getElementById("seeResultsBtn").addEventListener("click", () => {
   document.getElementById("scoreBig").textContent = r.overallPct + "%";
   document.getElementById("scoreBand").textContent = r.band;
 
-  // SPARK breakdown
   const sb = document.getElementById("sparkBreakdown");
   sb.innerHTML = "";
   ["S","P","A","R","K"].forEach(letter => {
@@ -905,86 +735,141 @@ document.getElementById("seeResultsBtn").addEventListener("click", () => {
       <div class="spark-label">${SPARK_INFO[letter].full}</div>
       <div class="spark-score">${score}<span class="spark-score-of"> / 10</span></div>
       <div class="spark-bar"><div class="spark-bar-fill" style="width: ${pct}%"></div></div>
-      <div class="spark-blurb">${SPARK_INFO[letter].blurb}</div>
-    `;
+      <div class="spark-blurb">${SPARK_INFO[letter].blurb}</div>`;
     sb.appendChild(row);
   });
 
-  // Top leaks
   const tl = document.getElementById("topLeaks");
   tl.innerHTML = "";
-  const actions = [
-    "Start your pilot here.",
-    "Save this for your second pilot.",
-    "Worth keeping on the list.",
-  ];
+  const actions = ["Start your pilot here.", "Save this for your second pilot.", "Worth keeping on the list."];
   r.topLeaks.forEach((leak, i) => {
+    const detail = answers.painDetail[i] || {};
+    const hasDetail = i < 2 && (detail.description || detail.outcomes || detail.affected);
     const card = document.createElement("div");
     card.className = "leak-card";
+    card.style.flexDirection = "column";
+    card.style.alignItems = "stretch";
     card.innerHTML = `
-      <div class="leak-rank leak-rank-${i+1}">#${i+1}</div>
-      <div class="leak-body">
-        <div class="leak-name">${leak.name}</div>
-        <div class="leak-action">${actions[i]}  ·  ${leak.desc}</div>
+      <div style="display:flex; gap:16px; align-items:center;">
+        <div class="leak-rank leak-rank-${i+1}">#${i+1}</div>
+        <div class="leak-body">
+          <div class="leak-name">${leak.name}</div>
+          <div class="leak-action">${actions[i]}  ·  ${leak.desc}</div>
+        </div>
+        <div class="leak-pain">
+          <div class="leak-pain-num">${leak.score}</div>
+          <div class="leak-pain-label">/ 5 pain</div>
+        </div>
       </div>
-      <div class="leak-pain">
-        <div class="leak-pain-num">${leak.score}</div>
-        <div class="leak-pain-label">/ 5 pain</div>
-      </div>
-    `;
+      ${hasDetail ? `
+      <div class="leak-detail-block">
+        ${detail.description ? `<div><strong>What it looks like:</strong> ${escapeHtml(detail.description)}</div>` : ''}
+        ${detail.outcomes ? `<div style="margin-top:6px;"><strong>Desired outcomes:</strong> ${escapeHtml(detail.outcomes)}</div>` : ''}
+        <div class="row">
+          ${detail.affected ? `<span>${detail.affected} affected</span>` : ''}
+          ${detail.local ? `<span>${detail.local} local</span>` : ''}
+          ${detail.over12 ? `<span>${detail.over12} > 12mo</span>` : ''}
+          ${detail.acra ? `<span>ACRA related: ${detail.acra}</span>` : ''}
+        </div>
+      </div>` : ''}`;
     tl.appendChild(card);
   });
 
-  // Next step
-  document.getElementById("nextStepText").textContent = r.nextStep;
+  const grants = [...document.querySelectorAll("#grantsGrid input:checked")].map(c => c.value).join(", ") || "—";
+  const champion = answers.logistics.championYN === "No"
+    ? `No · ${document.getElementById("picName").value || "—"} (${document.getElementById("picDesig").value || "—"})`
+    : (answers.logistics.championYN || "—");
+  const sg = document.getElementById("summaryGrid");
+  sg.innerHTML = `
+    <div><strong>UEN</strong>${document.getElementById("uen").value || "—"}</div>
+    <div><strong>Industry</strong>${document.getElementById("industry").value || "—"}</div>
+    <div><strong>Total employees</strong>${document.getElementById("empSize").value || "—"}</div>
+    <div><strong>Local / Foreign</strong>${(document.getElementById("empLocal").value || "—") + " / " + (document.getElementById("empForeign").value || "—")}</div>
+    <div><strong>Budget</strong>${document.getElementById("budget").value || "—"}</div>
+    <div><strong>Grant awareness</strong>${grants}</div>
+    <div><strong>Hiring</strong>${answers.logistics.hireYN === "Yes" ? "Yes · " + (document.getElementById("hireCount").value || "—") : (answers.logistics.hireYN || "—")}</div>
+    <div><strong>Project champion</strong>${champion}</div>
+    <div><strong>Preferred 1-on-1</strong>${document.getElementById("meetingTime").value || "—"}</div>
+    <div><strong>Contact</strong>${(document.getElementById("contactNum").value || "—") + " · " + (document.getElementById("emailAddr").value || "—")}</div>`;
 
-  // Show & scroll
+  document.getElementById("nextStepText").textContent = r.nextStep;
   results.classList.add("visible");
   document.getElementById("resultsAnchor").scrollIntoView({ behavior: "smooth", block: "start" });
 });
 
-// --- Reset ---
 function resetForm() {
   if (!confirm("Clear all answers and start over?")) return;
   answers.readiness.fill(null);
   answers.leaks.fill(null);
-  document.querySelectorAll(".scale button.selected").forEach(b => b.classList.remove("selected"));
+  answers.painDetail = [
+    { description: "", outcomes: "", affected: "", local: "", over12: "", acra: "" },
+    { description: "", outcomes: "", affected: "", local: "", over12: "", acra: "" },
+  ];
+  answers.logistics = { hireYN: "", championYN: "" };
+  document.querySelectorAll(".scale button.selected, .ynbtns button.selected, .pain-acra-btn.selected").forEach(b => b.classList.remove("selected"));
+  document.querySelectorAll("input, textarea, select").forEach(el => {
+    if (el.type === "checkbox") { el.checked = false; el.parentElement.classList.remove("checked"); }
+    else { el.value = ""; }
+  });
+  document.getElementById("hireYesPanel").classList.remove("show");
+  document.getElementById("championNoPanel").classList.remove("show");
+  document.getElementById("painDetailContainer").style.display = "none";
+  document.getElementById("painDetailLock").style.display = "block";
   document.getElementById("results").classList.remove("visible");
-  document.getElementById("bizName").value = "";
-  document.getElementById("contactNum").value = "";
-  document.getElementById("emailAddr").value = "";
-  document.getElementById("advisorName").value = "";
   updateProgress();
   window.scrollTo({ top: 0, behavior: "smooth" });
 }
 
-// --- Copy summary ---
 function copyResultsText() {
   const r = calculateResults();
   const biz = document.getElementById("bizName").value.trim() || "(unnamed business)";
-  const contact = document.getElementById("contactNum").value.trim();
-  const email = document.getElementById("emailAddr").value.trim();
+  const uen = document.getElementById("uen").value.trim();
   const advisor = document.getElementById("advisorName").value.trim();
   const today = new Date().toLocaleDateString();
+  const grants = [...document.querySelectorAll("#grantsGrid input:checked")].map(c => c.value).join(", ") || "—";
 
   const lines = [];
-  lines.push(`AI Readiness Discovery (based on SPARK) — ${biz}`);
-  if (contact) lines.push(`Contact: ${contact}`);
-  if (email) lines.push(`Email: ${email}`);
+  lines.push(`AI Readiness Discovery (based on SPARK)`);
+  lines.push(`Business: ${biz}${uen ? " (UEN " + uen + ")" : ""}`);
   if (advisor) lines.push(`Advisor: ${advisor}`);
   lines.push(`Date: ${today}`);
   lines.push(``);
   lines.push(`OVERALL AI READINESS: ${r.overallPct}%  (${r.band})`);
   lines.push(``);
   lines.push(`SPARK breakdown:`);
-  ["S","P","A","R","K"].forEach(L => {
-    lines.push(`  ${SPARK_INFO[L].full}: ${r.stepScores[L]}/10`);
-  });
+  ["S","P","A","R","K"].forEach(L => lines.push(`  ${SPARK_INFO[L].full}: ${r.stepScores[L]}/10`));
   lines.push(``);
   lines.push(`Top 3 Pain Points (Leaks):`);
   r.topLeaks.forEach((l, i) => {
     lines.push(`  #${i+1}  ${l.name}  (pain ${l.score}/5)`);
+    if (i < 2) {
+      const d = answers.painDetail[i];
+      if (d.description) lines.push(`        What it looks like: ${d.description}`);
+      if (d.outcomes)    lines.push(`        Desired outcomes:   ${d.outcomes}`);
+      const tags = [];
+      if (d.affected) tags.push(`${d.affected} affected`);
+      if (d.local)    tags.push(`${d.local} local`);
+      if (d.over12)   tags.push(`${d.over12} > 12mo`);
+      if (d.acra)     tags.push(`ACRA: ${d.acra}`);
+      if (tags.length) lines.push(`        ${tags.join(" · ")}`);
+    }
   });
+  lines.push(``);
+  lines.push(`Business profile:`);
+  lines.push(`  Industry: ${document.getElementById("industry").value || "—"}`);
+  lines.push(`  Total employees: ${document.getElementById("empSize").value || "—"}`);
+  lines.push(`  Local / Foreign: ${document.getElementById("empLocal").value || "—"} / ${document.getElementById("empForeign").value || "—"}`);
+  lines.push(``);
+  lines.push(`Logistics:`);
+  lines.push(`  Budget: ${document.getElementById("budget").value || "—"}`);
+  lines.push(`  Grant awareness: ${grants}`);
+  lines.push(`  Hiring: ${answers.logistics.hireYN === "Yes" ? "Yes (" + (document.getElementById("hireCount").value || "—") + ")" : (answers.logistics.hireYN || "—")}`);
+  if (answers.logistics.championYN === "No") {
+    lines.push(`  Project champion: ${document.getElementById("picName").value || "—"} · ${document.getElementById("picDesig").value || "—"} · ${document.getElementById("picMobile").value || "—"} · ${document.getElementById("picEmail").value || "—"}`);
+  } else {
+    lines.push(`  Project champion: ${answers.logistics.championYN || "—"} (self)`);
+  }
+  lines.push(`  Preferred 1-on-1: ${document.getElementById("meetingTime").value || "—"}`);
   lines.push(``);
   lines.push(`Suggested next step:`);
   lines.push(`  ${r.nextStep}`);
@@ -994,12 +879,9 @@ function copyResultsText() {
     const note = document.getElementById("copyStatus");
     note.style.display = "inline";
     setTimeout(() => { note.style.display = "none"; }, 2200);
-  }).catch(() => {
-    alert("Couldn't copy automatically. Here's the text:\n\n" + text);
-  });
+  }).catch(() => alert("Couldn't copy automatically. Here's the text:\n\n" + text));
 }
 
-// init
 updateProgress();
 </script>
 
